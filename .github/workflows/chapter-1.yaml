@@ -1,0 +1,19 @@
+name: Chapter-1 workflow
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: chapter-1
+      - name: Setup Python 3.5
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.5.10
+      - name: Install Dependencies
+        run: make install
+      - name: Lint
+        run: make lint
+      - name: Test
+        run: make test
